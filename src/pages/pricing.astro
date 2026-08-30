@@ -1,0 +1,545 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/pricing.css";
+import {siteConfig} from "../config/site";
+---
+
+<Layout
+  title="Website Development & Hosting Pricing | {siteConfig.name}"
+  description="Transparent pricing for professional website development, hosting, and optional maintenance services from {siteConfig.name}."
+>
+  <!-- =====================================================
+       Page Hero
+  ====================================================== -->
+
+  <section class="pricing-hero">
+    <div class="container">
+      <p class="eyebrow">PRICING</p>
+
+      <h1>
+        Build your website.
+        <span>Host it your way.</span>
+      </h1>
+
+      <p class="pricing-intro">
+        Website development and hosting are priced separately, so you
+        only pay for the services you actually need.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       Website Development
+  ====================================================== -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">WEBSITE DEVELOPMENT</p>
+
+        <h2>Pay once for your website.</h2>
+
+        <p>
+          The development cost covers designing and building your website.
+          The final price depends on the size, features, and requirements
+          of your project.
+        </p>
+      </div>
+
+
+      <div class="pricing-grid">
+
+        <!-- Static Website -->
+
+        <article class="pricing-card">
+
+          <div class="pricing-card-top">
+            <p class="pricing-label">01 / STATIC</p>
+
+            <h3>Static Website</h3>
+
+            <p class="pricing-description">
+              A fast and professional website for businesses that mainly
+              need to present their services, information, or portfolio.
+            </p>
+          </div>
+
+          <div class="price">
+            <span class="price-prefix">Starting at</span>
+            <strong>₹5,000</strong>
+            <span class="price-note">one-time</span>
+          </div>
+
+          <div class="pricing-divider"></div>
+
+          <ul class="pricing-features">
+            <li>Custom website design</li>
+            <li>Responsive on mobile, tablet and desktop</li>
+            <li>Business pages</li>
+            <li>Contact page</li>
+            <li>Basic SEO setup</li>
+            <li>Performance optimization</li>
+            <li>SSL configuration</li>
+            <li>Website deployment</li>
+          </ul>
+
+          <a href="/contact" class="button button-secondary pricing-button">
+            Start a Project
+          </a>
+
+        </article>
+
+
+        <!-- Dynamic Website -->
+
+        <article class="pricing-card pricing-card-featured">
+
+          <div class="pricing-badge">
+            CUSTOM
+          </div>
+
+          <div class="pricing-card-top">
+            <p class="pricing-label">02 / DYNAMIC</p>
+
+            <h3>Dynamic Website</h3>
+
+            <p class="pricing-description">
+              A custom web application for businesses that need databases,
+              accounts, dashboards, CMS functionality, or other advanced
+              features.
+            </p>
+          </div>
+
+          <div class="price">
+            <span class="price-prefix">Starting at</span>
+            <strong>₹15,000</strong>
+            <span class="price-note">one-time</span>
+          </div>
+
+          <div class="pricing-divider"></div>
+
+          <ul class="pricing-features">
+            <li>Custom application development</li>
+            <li>Responsive interface</li>
+            <li>Database integration</li>
+            <li>API integration</li>
+            <li>Content management</li>
+            <li>User authentication</li>
+            <li>Custom business functionality</li>
+            <li>Deployment and configuration</li>
+          </ul>
+
+          <a href="/contact" class="button button-primary pricing-button">
+            Discuss Your Project
+          </a>
+
+        </article>
+
+      </div>
+
+      <p class="pricing-note">
+        Final development pricing is provided after understanding your
+        requirements. Complex applications may require a custom quote.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       Hosting
+  ====================================================== -->
+
+  <section class="section section-light">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">HOSTING</p>
+
+        <h2>Hosting is separate.</h2>
+
+        <p>
+          You can host your website yourself or let {siteConfig.name} manage the
+          hosting for you. Hosting charges are recurring and are separate
+          from the website development cost.
+        </p>
+      </div>
+
+
+      <div class="hosting-grid">
+
+        <!-- Static Hosting -->
+
+        <article class="hosting-card">
+
+          <div class="hosting-card-header">
+            <div>
+              <p class="pricing-label">01 / STATIC HOSTING</p>
+
+              <h3>Business Hosting</h3>
+            </div>
+
+            <span class="hosting-type">STATIC</span>
+          </div>
+
+          <p class="hosting-description">
+            Suitable for fast, lightweight business websites, landing
+            pages, portfolios, and other static websites.
+          </p>
+
+          <div class="hosting-price">
+            <strong>₹1,500</strong>
+
+            <span>
+              / year
+            </span>
+          </div>
+
+          <ul class="hosting-features">
+            <li>Website hosting</li>
+            <li>SSL certificate</li>
+            <li>CDN delivery</li>
+            <li>DNS configuration</li>
+            <li>Basic monitoring</li>
+            <li>Deployment support</li>
+          </ul>
+
+          <a href="/contact" class="text-link">
+            Ask about hosting →
+          </a>
+
+        </article>
+
+
+        <!-- Application Hosting -->
+
+        <article class="hosting-card">
+
+          <div class="hosting-card-header">
+            <div>
+              <p class="pricing-label">02 / APPLICATION HOSTING</p>
+
+              <h3>Application Hosting</h3>
+            </div>
+
+            <span class="hosting-type">DYNAMIC</span>
+          </div>
+
+          <p class="hosting-description">
+            For dynamic websites and applications that require server-side
+            processing, databases, APIs, or other backend services.
+          </p>
+
+          <div class="hosting-price">
+            <strong>Custom</strong>
+
+            <span>
+              based on requirements
+            </span>
+          </div>
+
+          <ul class="hosting-features">
+            <li>Application hosting</li>
+            <li>Server configuration</li>
+            <li>Database hosting</li>
+            <li>SSL configuration</li>
+            <li>Backups</li>
+            <li>Monitoring</li>
+          </ul>
+
+          <a href="/contact" class="text-link">
+            Discuss hosting →
+          </a>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       Domain
+  ====================================================== -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="domain-section">
+
+        <div>
+          <p class="eyebrow">DOMAIN</p>
+
+          <h2>Your domain belongs to you.</h2>
+        </div>
+
+        <div class="domain-content">
+
+          <p>
+            Domain registration is separate from both website development
+            and hosting.
+          </p>
+
+          <p>
+            We can help you register and configure your domain, but the
+            domain remains under your ownership.
+          </p>
+
+          <div class="domain-points">
+            <span>✓ Domain registration</span>
+            <span>✓ DNS configuration</span>
+            <span>✓ SSL setup</span>
+            <span>✓ Domain connection</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       Maintenance
+  ====================================================== -->
+
+  <section class="section section-light">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">OPTIONAL</p>
+
+        <h2>Need someone to maintain it?</h2>
+
+        <p>
+          Website maintenance is optional. You can manage your website
+          yourself or ask {siteConfig.name} to handle updates and ongoing changes.
+        </p>
+      </div>
+
+
+      <div class="maintenance-grid">
+
+        <div class="maintenance-item">
+          <strong>Content Updates</strong>
+          <p>
+            Text, images, pages, and other content updates.
+          </p>
+        </div>
+
+        <div class="maintenance-item">
+          <strong>Technical Updates</strong>
+          <p>
+            Dependency updates, security updates, and technical
+            maintenance where applicable.
+          </p>
+        </div>
+
+        <div class="maintenance-item">
+          <strong>Feature Changes</strong>
+          <p>
+            New sections, features, integrations, and functionality
+            can be quoted separately.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       What You Actually Pay For
+  ====================================================== -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">HOW IT WORKS</p>
+
+        <h2>What will you actually pay for?</h2>
+
+        <p>
+          We keep the costs separate so there are no unnecessary bundled
+          services.
+        </p>
+      </div>
+
+
+      <div class="cost-breakdown">
+
+        <div class="cost-row">
+          <div>
+            <strong>Website Development</strong>
+            <span>One-time</span>
+          </div>
+
+          <p>
+            Cost of designing and building your website.
+          </p>
+        </div>
+
+        <div class="cost-row">
+          <div>
+            <strong>Hosting</strong>
+            <span>Recurring</span>
+          </div>
+
+          <p>
+            Cost of keeping your website or application online.
+          </p>
+        </div>
+
+        <div class="cost-row">
+          <div>
+            <strong>Domain</strong>
+            <span>Recurring</span>
+          </div>
+
+          <p>
+            Your domain registration is paid separately.
+          </p>
+        </div>
+
+        <div class="cost-row">
+          <div>
+            <strong>Maintenance</strong>
+            <span>Optional</span>
+          </div>
+
+          <p>
+            Ongoing updates and changes if you want {siteConfig.name} to manage them.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       FAQ
+  ====================================================== -->
+
+  <section class="section section-light">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+
+        <h2>Questions about pricing?</h2>
+      </div>
+
+
+      <div class="faq">
+
+        <details>
+          <summary>
+            Is hosting included in the website price?
+          </summary>
+
+          <p>
+            No. Website development and hosting are separate. This gives
+            you the freedom to host your website with {siteConfig.name} or another
+            provider.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Do I have to use {siteConfig.name} hosting?
+          </summary>
+
+          <p>
+            No. You are free to use your own hosting provider. We can help
+            configure and deploy your website to your preferred hosting
+            environment.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Is the domain included?
+          </summary>
+
+          <p>
+            No. Domain registration is separate because domain prices vary
+            depending on the domain extension and registrar.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Why don't dynamic websites have a fixed price?
+          </summary>
+
+          <p>
+            Dynamic applications can vary significantly in complexity.
+            A small database application and a complete business platform
+            can have very different development requirements, so we provide
+            a custom quote after understanding the project.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Can I manage the website myself?
+          </summary>
+
+          <p>
+            Yes. Depending on the type of website, we can provide a suitable
+            content management solution or hand over the project so you can
+            manage it yourself.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       Final CTA
+  ====================================================== -->
+
+  <section class="pricing-cta">
+
+    <div class="container pricing-cta-content">
+
+      <p class="eyebrow">START YOUR PROJECT</p>
+
+      <h2>
+        Have a website in mind?
+        <span>Let's talk about it.</span>
+      </h2>
+
+      <p>
+        Tell us what you want to build and we'll help you understand
+        the development, hosting, and ongoing costs.
+      </p>
+
+      <div class="pricing-cta-actions">
+
+        <a href="/contact" class="button button-primary">
+          Start Your Project →
+        </a>
+
+        <a href="/services" class="button button-secondary">
+          Explore Services
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</Layout>

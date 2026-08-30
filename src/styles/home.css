@@ -1,0 +1,718 @@
+/* ==================================================
+   ARKYORI — HOME PAGE
+================================================== */
+
+
+/* ==================================================
+   Hero
+================================================== */
+
+.hero {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 120px 0 130px;
+
+  border-bottom: 1px solid var(--color-border);
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(79, 70, 229, 0.08),
+      transparent 35%
+    ),
+    var(--color-background);
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  top: -250px;
+  right: -180px;
+
+  border-radius: 50%;
+
+  background: rgba(129, 140, 248, 0.08);
+
+  filter: blur(20px);
+
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+
+  z-index: 1;
+}
+
+.hero-text {
+  max-width: 900px;
+}
+
+.hero h1 {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-size: clamp(3.2rem, 7vw, 6rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.06em;
+}
+
+.hero h1 span {
+  display: block;
+
+  color: var(--color-primary);
+}
+
+.hero-description {
+  max-width: 700px;
+
+  margin: 32px 0 0;
+
+  color: var(--color-muted);
+
+  font-size: 1.2rem;
+
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 38px;
+}
+
+
+/* ==================================================
+   Service Cards
+================================================== */
+
+.service-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+}
+
+.service-card {
+  position: relative;
+
+  padding: 40px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--color-primary-border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.card-number {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  margin-bottom: 28px;
+
+  border-radius: 50%;
+
+  background: var(--color-primary-soft);
+
+  color: var(--color-primary);
+
+  font-size: 0.8rem;
+
+  font-weight: 750;
+}
+
+.service-card h3 {
+  margin: 0 0 14px;
+
+  font-size: 1.8rem;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
+}
+
+.service-card > p {
+  margin: 0;
+
+  color: var(--color-muted);
+}
+
+.service-card ul {
+  margin: 28px 0 30px;
+
+  padding: 0;
+
+  list-style: none;
+
+  color: var(--color-text-light);
+}
+
+.service-card li {
+  position: relative;
+
+  margin-bottom: 11px;
+
+  padding-left: 22px;
+}
+
+.service-card li:last-child {
+  margin-bottom: 0;
+}
+
+.service-card li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 0;
+
+  color: var(--color-primary);
+
+  font-weight: 700;
+}
+
+.service-card > a {
+  font-weight: 650;
+
+  transition: color var(--transition-fast);
+}
+
+.service-card > a:hover {
+  color: var(--color-primary);
+}
+
+
+/* ==================================================
+   Technology
+================================================== */
+
+.technology-grid {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 12px;
+}
+
+.technology-item {
+  min-height: 135px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 24px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-background);
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.technology-item:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--color-primary-border);
+}
+
+.technology-item strong {
+  font-size: 1.1rem;
+}
+
+.technology-item span {
+  margin-top: 6px;
+
+  color: var(--color-muted);
+
+  font-size: 0.85rem;
+}
+
+
+/* ==================================================
+   Why Arkyori
+================================================== */
+
+.two-column {
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 100px;
+
+  align-items: start;
+}
+
+.two-column h2 {
+  margin: 0;
+
+  font-size: clamp(2.3rem, 4vw, 3.7rem);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+}
+
+.two-column > div:last-child {
+  padding-top: 8px;
+}
+
+.two-column > div:last-child p {
+  margin: 0 0 24px;
+
+  color: var(--color-text-light);
+
+  font-size: 1.08rem;
+
+  line-height: 1.8;
+}
+
+.two-column > div:last-child p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ==================================================
+   Pricing Preview
+================================================== */
+
+.pricing-preview {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+}
+
+.pricing-preview > div {
+  position: relative;
+
+  padding: 36px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.pricing-preview > div:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--color-primary-border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-preview h3 {
+  margin: 0 0 12px;
+
+  font-size: 1.6rem;
+}
+
+.pricing-preview p {
+  min-height: 52px;
+
+  margin: 0;
+
+  color: var(--color-muted);
+}
+
+.pricing-preview a {
+  display: inline-block;
+
+  margin-top: 25px;
+
+  color: var(--color-primary);
+
+  font-weight: 650;
+}
+
+.pricing-preview a:hover {
+  color: var(--color-primary-dark);
+}
+
+
+/* ==================================================
+   Blog Preview
+================================================== */
+
+.home-blog-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+}
+
+.home-blog-card {
+  padding: 36px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.home-blog-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--color-primary-border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.home-blog-meta {
+  display: flex;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+
+  color: var(--color-muted);
+
+  font-size: 0.82rem;
+}
+
+.home-blog-card h3 {
+  margin: 0;
+
+  font-size: 1.7rem;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
+}
+
+.home-blog-card h3 a:hover {
+  color: var(--color-primary);
+}
+
+.home-blog-card > p {
+  margin: 16px 0 0;
+
+  color: var(--color-muted);
+}
+
+.home-blog-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 24px;
+}
+
+.home-blog-tags span {
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  background: #f3f4f6;
+
+  color: var(--color-text-light);
+
+  font-size: 0.78rem;
+}
+
+.home-blog-link {
+  display: inline-block;
+
+  margin-top: 25px;
+
+  font-weight: 650;
+}
+
+.home-blog-link:hover {
+  color: var(--color-primary);
+}
+
+.home-blog-empty {
+  padding: 45px;
+
+  border: 1px dashed var(--color-border-dark);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background-light);
+
+  text-align: center;
+
+  color: var(--color-muted);
+}
+
+.home-blog-empty p {
+  margin: 0;
+}
+
+.home-blog-footer {
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 45px;
+}
+
+
+/* ==================================================
+   Final CTA
+================================================== */
+
+.final-cta {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 115px 0;
+
+  background: var(--color-dark);
+
+  color: #ffffff;
+}
+
+.final-cta::before {
+  content: "";
+
+  position: absolute;
+
+  width: 550px;
+  height: 550px;
+
+  top: -300px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(79, 70, 229, 0.2);
+
+  filter: blur(20px);
+
+  pointer-events: none;
+}
+
+.final-cta-content {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 780px;
+
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+.final-cta .eyebrow {
+  color: #9ca3af;
+}
+
+.final-cta h2 {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+  line-height: 1.02;
+
+  letter-spacing: -0.05em;
+}
+
+.final-cta h2 span {
+  display: block;
+
+  color: var(--color-primary-light);
+}
+
+.final-cta-description {
+  max-width: 650px;
+
+  margin: 25px auto 0;
+
+  color: #d1d5db;
+
+  font-size: 1.08rem;
+
+  line-height: 1.7;
+}
+
+.final-cta-actions {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 35px;
+}
+
+.final-cta .button-secondary {
+  border-color: #4b5563;
+
+  background: transparent;
+
+  color: #ffffff;
+}
+
+.final-cta .button-secondary:hover {
+  border-color: #6b7280;
+
+  background: var(--color-dark-soft);
+}
+
+.final-cta-note {
+  margin: 25px 0 0;
+
+  color: #9ca3af;
+
+  font-size: 0.85rem;
+}
+
+
+/* ==================================================
+   Responsive
+================================================== */
+
+@media (max-width: 900px) {
+
+  .hero {
+    padding: 90px 0 100px;
+  }
+
+  .technology-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .two-column {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .hero {
+    padding: 75px 0 85px;
+  }
+
+  .hero h1 {
+    font-size: clamp(
+      2.8rem,
+      13vw,
+      4.5rem
+    );
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .service-grid,
+  .pricing-preview,
+  .home-blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card,
+  .pricing-preview > div,
+  .home-blog-card {
+    padding: 30px;
+  }
+
+  .technology-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .final-cta {
+    padding: 85px 0;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .technology-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .technology-item {
+    min-height: 100px;
+  }
+
+  .final-cta-actions {
+    flex-direction: column;
+  }
+
+  .final-cta-actions .button {
+    width: 100%;
+  }
+
+}

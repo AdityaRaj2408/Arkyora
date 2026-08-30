@@ -1,0 +1,141 @@
+---
+import {siteConfig} from "../config/site"
+import "../styles/header.css";
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a
+      href="/"
+      class="logo"
+      aria-label="Arkyora home"
+    >
+      {siteConfig.name}
+    </a>
+
+    <nav
+      class="desktop-nav"
+      aria-label="Main navigation"
+    >
+      <a href="/" class="nav-link">Home</a>
+
+      <a href="/services/" class="nav-link">
+        Services
+      </a>
+
+      <a href="/pricing/" class="nav-link">
+        Pricing
+      </a>
+
+      <a href="/blog/" class="nav-link">
+        Blog
+      </a>
+
+      <a
+        href="/contact/"
+        class="nav-link nav-contact"
+      >
+        Contact
+      </a>
+    </nav>
+
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="mobile-nav"
+    aria-label="Mobile navigation"
+    aria-hidden="true"
+  >
+    <div class="mobile-nav-inner">
+      <a href="/">Home</a>
+
+      <a href="/services/">
+        Services
+      </a>
+
+      <a href="/pricing/">
+        Pricing
+      </a>
+
+      <a href="/blog/">
+        Blog
+      </a>
+
+      <a
+        href="/contact/"
+        class="mobile-contact"
+      >
+        Contact
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuButton =
+    document.querySelector<HTMLButtonElement>(".menu-button");
+
+  const mobileMenu =
+    document.querySelector<HTMLElement>("#mobile-menu");
+
+  if (menuButton && mobileMenu) {
+    const button = menuButton;
+    const menu = mobileMenu;
+
+    const mobileLinks =
+      menu.querySelectorAll<HTMLAnchorElement>("a");
+
+    function closeMenu() {
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Open menu");
+
+      menu.setAttribute("aria-hidden", "true");
+      menu.classList.remove("is-open");
+
+      document.body.classList.remove("menu-open");
+    }
+
+    function openMenu() {
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Close menu");
+
+      menu.setAttribute("aria-hidden", "false");
+      menu.classList.add("is-open");
+
+      document.body.classList.add("menu-open");
+    }
+
+    button.addEventListener("click", () => {
+      const isOpen =
+        button.getAttribute("aria-expanded") === "true";
+
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+  }
+</script>

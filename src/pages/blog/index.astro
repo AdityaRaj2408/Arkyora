@@ -1,0 +1,459 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/blog.css";
+
+const posts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = posts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const latestPosts = sortedPosts.slice(0, 12);
+
+const tags = [
+  ...new Set(
+    posts.flatMap((post) => post.data.tags || [])
+  ),
+].sort((a, b) => a.localeCompare(b));
+---
+
+<Layout
+  title="Blog & Tutorials"
+  description="Tutorials and practical guides about website development, Astro, WordPress, hosting, and web technology."
+>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">BLOG & TUTORIALS</p>
+
+      <h1>Learn how websites are built.</h1>
+
+      <p class="intro">
+        Practical tutorials, guides, and explanations about website
+        development, hosting, performance, and modern web technologies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Search -->
+  <section class="blog-search-section">
+    <div class="container">
+      <div class="blog-search">
+
+        <div class="blog-search-header">
+          <div>
+            <p class="eyebrow">SEARCH ARTICLES</p>
+
+            <h2>Find what you're looking for.</h2>
+          </div>
+
+          <span
+            id="search-count"
+            class="search-count"
+            aria-live="polite"
+          ></span>
+        </div>
+
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+
+          <input
+            id="blog-search"
+            type="search"
+            placeholder="Search tutorials, hosting, Astro, WordPress..."
+            autocomplete="off"
+            aria-label="Search articles"
+          />
+
+          <button
+            id="clear-search"
+            type="button"
+            aria-label="Clear search"
+          >
+            ×
+          </button>
+        </div>
+
+        <!-- Topics -->
+        <div class="topic-filter-section">
+          <div class="topic-header">
+            <span>Browse by topic</span>
+          </div>
+
+          <div class="topic-filters">
+            <button
+              type="button"
+              class="topic-button is-active"
+              data-topic="all"
+            >
+              All
+            </button>
+
+            {
+              tags.map((tag) => (
+                <button
+                  type="button"
+                  class="topic-button"
+                  data-topic={tag}
+                >
+                  {tag}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Search results -->
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Articles -->
+  <section class="section">
+    <div class="container">
+
+      <div class="blog-section-header">
+        <div>
+          <p class="eyebrow">ALL ARTICLES</p>
+
+          <h2 id="articles-heading">
+            Latest articles
+          </h2>
+        </div>
+
+        <span class="article-total">
+          {sortedPosts.length} articles
+        </span>
+      </div>
+
+      {
+        latestPosts.length > 0 ? (
+          <div
+            id="latest-articles"
+            class="post-grid"
+          >
+            {latestPosts.map((post) => (
+              <article class="post-card">
+
+                <div class="post-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString("en-IN", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </time>
+
+                  <span>•</span>
+
+                  <span>{post.data.author}</span>
+                </div>
+
+                <h2>
+                  <a href={`/blog/${post.id}/`}>
+                    {post.data.title}
+                  </a>
+                </h2>
+
+                <p>
+                  {post.data.description}
+                </p>
+
+                {
+                  post.data.tags.length > 0 && (
+                    <div class="tags">
+                      {post.data.tags.map((tag) => (
+                        <span>{tag}</span>
+                      ))}
+                    </div>
+                  )
+                }
+
+                <a
+                  class="read-more"
+                  href={`/blog/${post.id}/`}
+                >
+                  Read article →
+                </a>
+
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="empty">
+            <p>No articles published yet.</p>
+          </div>
+        )
+      }
+
+    </div>
+  </section>
+
+  <script is:inline>
+    const input =
+      document.querySelector("#blog-search");
+
+    const resultsContainer =
+      document.querySelector("#search-results");
+
+    const clearButton =
+      document.querySelector("#clear-search");
+
+    const count =
+      document.querySelector("#search-count");
+
+    const latestArticles =
+      document.querySelector("#latest-articles");
+
+    const articlesHeading =
+      document.querySelector("#articles-heading");
+
+    const topicButtons =
+      document.querySelectorAll(".topic-button");
+
+    let pagefind = null;
+    let currentTopic = "all";
+    let currentQuery = "";
+    let currentResults = [];
+    let visibleResults = 12;
+
+    async function loadPagefind() {
+      if (!pagefind) {
+        pagefind = await import("/pagefind/pagefind.js");
+      }
+
+      return pagefind;
+    }
+
+    function escapeHTML(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderSearchResults() {
+      const results =
+        currentResults.slice(0, visibleResults);
+
+      if (currentResults.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="search-empty">
+            <strong>No articles found</strong>
+
+            <p>
+              Try another keyword or choose a different topic.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+      resultsContainer.innerHTML = `
+        <div class="search-results-header">
+          <strong>
+            ${currentResults.length}
+            ${
+              currentResults.length === 1
+                ? "article"
+                : "articles"
+            }
+            found
+          </strong>
+
+          ${
+            currentResults.length > 12
+              ? `<span>Showing ${results.length} of ${currentResults.length}</span>`
+              : ""
+          }
+        </div>
+
+        <div class="search-result-grid">
+          ${results
+            .map(
+              (result) => `
+                <a
+                  class="search-result-card"
+                  href="${escapeHTML(result.url)}"
+                >
+                  <div class="search-result-content">
+
+                    <div class="search-result-meta">
+                      Article
+                    </div>
+
+                    <h3>
+                      ${escapeHTML(
+                        result.meta.title || "Untitled article"
+                      )}
+                    </h3>
+
+                    <p>
+                      ${result.excerpt || ""}
+                    </p>
+
+                  </div>
+
+                  <span class="search-result-arrow">
+                    →
+                  </span>
+                </a>
+              `
+            )
+            .join("")}
+        </div>
+
+        ${
+          currentResults.length > visibleResults
+            ? `
+              <div class="search-load-more">
+                <button
+                  type="button"
+                  id="load-more-results"
+                  class="button button-secondary"
+                >
+                  Load more articles
+                </button>
+              </div>
+            `
+            : ""
+        }
+      `;
+
+      const loadMore =
+        document.querySelector("#load-more-results");
+
+      loadMore?.addEventListener("click", () => {
+        visibleResults += 12;
+        renderSearchResults();
+      });
+    }
+
+    async function searchArticles() {
+      const term = input?.value.trim() || "";
+
+      currentQuery = term;
+
+      /*
+       * No search and no topic selected:
+       * show normal latest articles.
+       */
+      if (!term && currentTopic === "all") {
+        resultsContainer.innerHTML = "";
+        count.textContent = "";
+
+        latestArticles?.classList.remove(
+          "articles-hidden"
+        );
+
+        articlesHeading.textContent =
+          "Latest articles";
+
+        return;
+      }
+
+      latestArticles?.classList.add(
+        "articles-hidden"
+      );
+
+      articlesHeading.textContent =
+        "Search results";
+
+      resultsContainer.innerHTML = `
+        <div class="search-loading">
+          Searching articles...
+        </div>
+      `;
+
+      const pf = await loadPagefind();
+
+      const options = {};
+
+      if (currentTopic !== "all") {
+        options.filters = {
+          tag: currentTopic,
+        };
+      }
+
+      const search =
+        await pf.search(term, options);
+
+      const loadedResults =
+        await Promise.all(
+          search.results.map(
+            (result) => result.data()
+          )
+        );
+
+      currentResults = loadedResults;
+      visibleResults = 12;
+
+      count.textContent =
+        `${currentResults.length} ${
+          currentResults.length === 1
+            ? "result"
+            : "results"
+        }`;
+
+      renderSearchResults();
+    }
+
+    let searchTimeout;
+
+    input?.addEventListener("input", () => {
+      clearTimeout(searchTimeout);
+
+      searchTimeout = setTimeout(() => {
+        searchArticles();
+      }, 250);
+    });
+
+    clearButton?.addEventListener("click", () => {
+      if (input) {
+        input.value = "";
+        input.focus();
+      }
+
+      currentQuery = "";
+      currentTopic = "all";
+      currentResults = [];
+
+      topicButtons.forEach((button) => {
+        button.classList.toggle(
+          "is-active",
+          button.dataset.topic === "all"
+        );
+      });
+
+      searchArticles();
+    });
+
+    topicButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        currentTopic =
+          button.dataset.topic || "all";
+
+        topicButtons.forEach((item) => {
+          item.classList.toggle(
+            "is-active",
+            item === button
+          );
+        });
+
+        searchArticles();
+      });
+    });
+  </script>
+</Layout>

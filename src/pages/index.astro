@@ -1,17 +1,560 @@
 ---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import "../styles/home.css";
+import {siteConfig} from "../config/site";
 
+const posts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const latestPosts = posts
+  .sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  )
+  .slice(0, 2);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Website Development for Modern Businesses | {siteConfig.name}"
+  description="{siteConfig.name} builds fast, professional websites and custom web applications tailored to your business needs, goals, and budget."
+>
+
+  <!-- ==================================================
+       Hero
+  ================================================== -->
+
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div class="hero-text">
+
+        <p class="eyebrow">
+          WEBSITE DEVELOPMENT FOR MODERN BUSINESSES
+        </p>
+
+        <h1>
+          Websites built
+          <span>around your business.</span>
+        </h1>
+
+        <p class="hero-description">
+          {siteConfig.name} builds fast, modern websites and web applications
+          tailored to your business needs, goals, and budget.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            href="/contact/"
+            class="button button-primary"
+          >
+            Start Your Project
+          </a>
+
+          <a
+            href="/services/"
+            class="button button-secondary"
+          >
+            Explore Services
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================================================
+       Services Overview
+  ================================================== -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          WHAT WE BUILD
+        </p>
+
+        <h2>
+          The right website for what you need.
+        </h2>
+
+        <p>
+          Every business has different requirements. We choose the right
+          technology based on what your website actually needs—not a
+          one-size-fits-all approach.
+        </p>
+
+      </div>
+
+
+      <div class="service-grid">
+
+        <!-- Business Websites -->
+
+        <article class="service-card">
+
+          <div class="card-number">
+            01
+          </div>
+
+          <h3>
+            Business Websites
+          </h3>
+
+          <p>
+            Fast, secure, and professional websites for businesses that
+            need a strong online presence without unnecessary complexity.
+          </p>
+
+          <ul>
+
+            <li>
+              Business websites
+            </li>
+
+            <li>
+              Landing pages
+            </li>
+
+            <li>
+              Portfolio websites
+            </li>
+
+            <li>
+              Content websites
+            </li>
+
+            <li>
+              SEO-friendly structure
+            </li>
+
+          </ul>
+
+          <a href="/services/">
+            Learn more →
+          </a>
+
+        </article>
+
+
+        <!-- Web Applications -->
+
+        <article class="service-card">
+
+          <div class="card-number">
+            02
+          </div>
+
+          <h3>
+            Web Applications
+          </h3>
+
+          <p>
+            Custom web applications for businesses that need databases,
+            user accounts, dashboards, content management, or other
+            advanced functionality.
+          </p>
+
+          <ul>
+
+            <li>
+              Custom web applications
+            </li>
+
+            <li>
+              Database integration
+            </li>
+
+            <li>
+              Content management
+            </li>
+
+            <li>
+              User authentication
+            </li>
+
+            <li>
+              Custom functionality
+            </li>
+
+          </ul>
+
+          <a href="/services/">
+            Learn more →
+          </a>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       Technology
+  ================================================== -->
+
+  <section class="section section-light">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          OUR TECHNOLOGY
+        </p>
+
+        <h2>
+          Technology that fits the project.
+        </h2>
+
+        <p>
+          We don't force every business into the same technology stack.
+          We choose reliable tools based on your website's requirements,
+          functionality, and long-term needs.
+        </p>
+
+      </div>
+
+
+      <div class="technology-grid">
+
+        <div class="technology-item">
+          <strong>Astro</strong>
+          <span>Fast modern websites</span>
+        </div>
+
+        <div class="technology-item">
+          <strong>WordPress</strong>
+          <span>Easy content management</span>
+        </div>
+
+        <div class="technology-item">
+          <strong>React</strong>
+          <span>Interactive applications</span>
+        </div>
+
+        <div class="technology-item">
+          <strong>Strapi</strong>
+          <span>Flexible headless CMS</span>
+        </div>
+
+        <div class="technology-item">
+          <strong>Database</strong>
+          <span>Data-driven applications</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       Why Arkyora
+  ================================================== -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="two-column">
+
+        <div>
+
+          <p class="eyebrow">
+            WHY {siteConfig.name}
+          </p>
+
+          <h2>
+            Not every business needs the same website.
+          </h2>
+
+        </div>
+
+
+        <div>
+
+          <p>
+            We start by understanding what your business needs and what
+            you want your website to accomplish. From there, we recommend
+            the appropriate solution.
+          </p>
+
+          <p>
+            Whether you need a simple website to showcase your business
+            or a more advanced web application, we focus on building only
+            what you actually need.
+          </p>
+
+          <p>
+            The result is a website that is practical, maintainable,
+            performant, and appropriate for your budget.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       Pricing Preview
+  ================================================== -->
+
+  <section class="section section-light">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          PRICING
+        </p>
+
+        <h2>
+          A solution that fits your requirements.
+        </h2>
+
+        <p>
+          Different websites require different levels of work. Our pricing
+          reflects the complexity and functionality your project actually
+          needs.
+        </p>
+
+      </div>
+
+
+      <div class="pricing-preview">
+
+        <div>
+
+          <h3>
+            Business Website
+          </h3>
+
+          <p>
+            Ideal for businesses that need a fast and professional online
+            presence.
+          </p>
+
+          <a href="/pricing/">
+            View pricing →
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <h3>
+            Web Application
+          </h3>
+
+          <p>
+            Ideal for businesses that need databases, CMS functionality,
+            accounts, dashboards, or custom features.
+          </p>
+
+          <a href="/pricing/">
+            View pricing →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       Blog Preview
+  ================================================== -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          FROM THE BLOG
+        </p>
+
+        <h2>
+          Learn how websites are built.
+        </h2>
+
+        <p>
+          Practical tutorials, guides, and information about website
+          development, hosting, performance, and modern web technologies.
+        </p>
+
+      </div>
+
+
+      {latestPosts.length > 0 ? (
+
+        <div class="home-blog-grid">
+
+          {latestPosts.map((post) => (
+
+            <article class="home-blog-card">
+
+              <div class="home-blog-meta">
+
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </time>
+
+                <span>•</span>
+
+                <span>
+                  {post.data.author}
+                </span>
+
+              </div>
+
+
+              <h3>
+
+                <a href={`/blog/${post.id}/`}>
+                  {post.data.title}
+                </a>
+
+              </h3>
+
+
+              <p>
+                {post.data.description}
+              </p>
+
+
+              {post.data.tags.length > 0 && (
+
+                <div class="home-blog-tags">
+
+                  {post.data.tags
+                    .slice(0, 3)
+                    .map((tag) => (
+                      <span>
+                        {tag}
+                      </span>
+                    ))}
+
+                </div>
+
+              )}
+
+
+              <a
+                class="home-blog-link"
+                href={`/blog/${post.id}/`}
+              >
+                Read Article →
+              </a>
+
+            </article>
+
+          ))}
+
+        </div>
+
+      ) : (
+
+        <div class="home-blog-empty">
+
+          <p>
+            No articles have been published yet.
+          </p>
+
+        </div>
+
+      )}
+
+
+      <div class="home-blog-footer">
+
+        <a
+          href="/blog/"
+          class="button button-secondary"
+        >
+          View All Articles →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       Final CTA
+  ================================================== -->
+
+  <section class="final-cta">
+
+    <div class="container final-cta-content">
+
+      <p class="eyebrow">
+        LET'S BUILD YOUR WEBSITE
+      </p>
+
+      <h2>
+        Have a website idea?
+        <span>Let's build it.</span>
+      </h2>
+
+      <p class="final-cta-description">
+        Tell us about your business, your goals, and what you want your
+        website to do. We'll help you choose the right technology and
+        solution for your needs.
+      </p>
+
+      <div class="final-cta-actions">
+
+        <a
+          href="/contact/"
+          class="button button-primary"
+        >
+          Start Your Project →
+        </a>
+
+        <a
+          href="/pricing/"
+          class="button button-secondary"
+        >
+          View Pricing
+        </a>
+
+      </div>
+
+      <p class="final-cta-note">
+        No technical knowledge required. Just tell us what you need.
+      </p>
+
+    </div>
+
+  </section>
+
+</Layout>

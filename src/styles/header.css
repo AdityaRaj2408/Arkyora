@@ -1,0 +1,328 @@
+ /* ==================================================
+   Header
+================================================== */
+
+.site-header {
+  position: relative;
+  z-index: 100;
+
+  border-bottom: 1px solid var(--color-border);
+
+  background: rgba(255, 255, 255, 0.94);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ==================================================
+   Header Layout
+================================================== */
+
+.header-inner {
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+/* ==================================================
+   Arkyori Logo
+================================================== */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  color: var(--color-text);
+
+  font-size: 1.3rem;
+  font-weight: 800;
+
+  letter-spacing: -0.045em;
+
+  text-decoration: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+/* ==================================================
+   Desktop Navigation
+================================================== */
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.desktop-nav .nav-link {
+  position: relative;
+
+  padding: 7px 0;
+
+  color: var(--color-text-light);
+
+  font-size: 0.92rem;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.desktop-nav .nav-link::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: var(--color-primary);
+
+  transition: width 0.2s ease;
+}
+
+.desktop-nav .nav-link:hover {
+  color: var(--color-text);
+}
+
+.desktop-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* ==================================================
+   Contact Button
+================================================== */
+
+.desktop-nav .nav-contact {
+  padding: 10px 17px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-text);
+  color: #ffffff;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.desktop-nav .nav-contact::after {
+  display: none;
+}
+
+.desktop-nav .nav-contact:hover {
+  background: var(--color-dark-soft, #1f2937);
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+/* ==================================================
+   Mobile Menu Button
+================================================== */
+
+.menu-button {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: #ffffff;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+  gap: 5px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.menu-button:hover {
+  border-color: var(--color-border-dark);
+  background: var(--color-background-light);
+}
+
+.menu-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.menu-button span {
+  display: block;
+
+  width: 18px;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: var(--color-text);
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+
+/* ==================================================
+   Hamburger → X
+================================================== */
+
+.menu-button[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-button[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==================================================
+   Mobile Navigation
+================================================== */
+
+.mobile-nav {
+  display: none;
+
+  border-top: 1px solid var(--color-border);
+
+  background: #ffffff;
+}
+
+.mobile-nav-inner {
+  width: min(
+    var(--container-width),
+    calc(100% - 32px)
+  );
+
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 12px 0 20px;
+}
+
+.mobile-nav a {
+  padding: 15px 4px;
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-light);
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
+}
+
+.mobile-nav a:last-child {
+  border-bottom: 0;
+}
+
+.mobile-nav a:hover {
+  color: var(--color-primary);
+  padding-left: 8px;
+}
+
+/* ==================================================
+   Mobile Contact
+================================================== */
+
+.mobile-nav .mobile-contact {
+  margin-top: 12px;
+
+  border: 0;
+  border-radius: var(--radius-sm);
+
+  background: var(--color-primary);
+
+  color: #ffffff;
+
+  text-align: center;
+}
+
+.mobile-nav .mobile-contact:hover {
+  padding-left: 4px;
+
+  background: var(--color-primary-dark);
+
+  color: #ffffff;
+}
+
+/* ==================================================
+   Open State
+================================================== */
+
+.mobile-nav.is-open {
+  display: block;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ==================================================
+   Mobile
+================================================== */
+
+@media (max-width: 800px) {
+  .header-inner {
+    min-height: 68px;
+
+    padding: 12px 0;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: flex;
+  }
+}
+
+/* ==================================================
+   Small Screens
+================================================== */
+
+@media (max-width: 500px) {
+  .header-inner {
+    min-height: 64px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}

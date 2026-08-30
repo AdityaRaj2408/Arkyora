@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/blog-articles.css";
+import styles from "virtual:astro:image-styles.css";
+
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  });
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+>
+  <article>
+    <header class="article-header">
+      <div class="container">
+        <div class="article-meta">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString("en-IN", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </time>
+
+          <span>•</span>
+
+          <span>{post.data.author}</span>
+        </div>
+
+        <h1>{post.data.title}</h1>
+
+        <p>{post.data.description}</p>
+
+
+        {post.data.tags.length > 0 && (
+  <div class="tags">
+    {post.data.tags.map((tag) => (
+      <span data-pagefind-filter="tag">
+        {tag}
+      </span>
+    ))}
+  </div>
+)}
+      </div>
+    </header>
+
+  <div class="container article-container">
+  <div class="article-content" data-pagefind-body>
+    <Content />
+  </div>
+</div>
+  </article>
+  <section class="article-cta">
+    <div class="container">
+      <h2>Need help building your website?</h2>
+
+      <p>
+        If you're planning a website and don't know where to start,
+        let's discuss your requirements.
+      </p>
+
+      <a href="/contact">Contact Us →</a>
+    </div>
+  </section>
+</Layout>

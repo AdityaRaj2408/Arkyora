@@ -1,0 +1,578 @@
+/* =========================================================
+   ARKYORI — SERVICES PAGE
+========================================================= */
+
+/* =========================================================
+   Page Hero
+========================================================= */
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+
+  padding: 115px 0 125px;
+
+  border-bottom: 1px solid var(--color-border);
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(79, 70, 229, 0.08),
+      transparent 35%
+    ),
+    var(--color-background);
+}
+
+.page-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 480px;
+  height: 480px;
+
+  top: -260px;
+  right: -160px;
+
+  border-radius: 50%;
+
+  background: rgba(129, 140, 248, 0.08);
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+.page-hero .container {
+  position: relative;
+
+  z-index: 1;
+}
+
+.page-hero h1 {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.06em;
+}
+
+.intro {
+  max-width: 720px;
+
+  margin-top: 30px;
+
+  color: var(--color-muted);
+
+  font-size: 1.2rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   Service Sections
+========================================================= */
+
+.service-layout {
+  display: grid;
+
+  grid-template-columns: 1fr 0.85fr;
+
+  gap: 90px;
+
+  align-items: start;
+}
+
+.service-intro {
+  max-width: 650px;
+}
+
+.service-intro h2 {
+  margin: 0 0 24px;
+
+  font-size: clamp(2.4rem, 5vw, 4rem);
+
+  line-height: 1.02;
+
+  letter-spacing: -0.05em;
+}
+
+.service-intro > p:not(.eyebrow) {
+  margin: 0 0 20px;
+
+  color: var(--color-text-light);
+
+  font-size: 1.08rem;
+
+  line-height: 1.8;
+}
+
+.service-intro > p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   Technology Card
+========================================================= */
+
+.technology-card {
+  padding: 34px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f9fafb
+    );
+
+  box-shadow: var(--shadow-sm);
+}
+
+.technology-card h3 {
+  margin: 0 0 26px;
+
+  font-size: 1.25rem;
+
+  letter-spacing: -0.02em;
+}
+
+.tech-row {
+  padding: 22px 0;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.tech-row:first-of-type {
+  padding-top: 0;
+
+  border-top: 0;
+}
+
+.tech-row:last-child {
+  padding-bottom: 0;
+}
+
+.tech-row strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 1.05rem;
+}
+
+.tech-row span {
+  display: block;
+
+  color: var(--color-muted);
+
+  font-size: 0.92rem;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   Application Stack
+========================================================= */
+
+.stack {
+  display: grid;
+
+  gap: 10px;
+}
+
+.stack-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 17px 18px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-background);
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.stack-item:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--color-primary-border);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.stack-item strong {
+  font-size: 0.95rem;
+}
+
+.stack-item span {
+  color: var(--color-muted);
+
+  font-size: 0.82rem;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   Feature Grid
+========================================================= */
+
+.feature-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 14px;
+
+  margin-top: 60px;
+}
+
+.feature-grid > div {
+  min-height: 170px;
+
+  padding: 26px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--color-background);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.feature-grid > div:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--color-primary-border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.feature-grid strong {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 1rem;
+}
+
+.feature-grid p {
+  margin: 0;
+
+  color: var(--color-muted);
+
+  font-size: 0.9rem;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   Comparison
+========================================================= */
+
+.comparison {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+
+  max-width: 950px;
+}
+
+.comparison-column {
+  position: relative;
+
+  padding: 36px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.comparison-column:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--color-primary-border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.comparison-column h3 {
+  margin: 0;
+
+  font-size: 1.45rem;
+
+  letter-spacing: -0.025em;
+}
+
+.comparison-intro {
+  margin: 14px 0 25px;
+
+  color: var(--color-muted);
+
+  font-size: 0.95rem;
+
+  line-height: 1.65;
+}
+
+.comparison-column ul {
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.comparison-column li {
+  position: relative;
+
+  margin-bottom: 15px;
+
+  padding-left: 27px;
+
+  color: var(--color-text-light);
+
+  line-height: 1.6;
+}
+
+.comparison-column li:last-child {
+  margin-bottom: 0;
+}
+
+.comparison-column li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 0;
+  top: 1px;
+
+  color: var(--color-primary);
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 115px 0;
+
+  background: var(--color-dark);
+
+  color: #ffffff;
+
+  text-align: center;
+}
+
+.cta::before {
+  content: "";
+
+  position: absolute;
+
+  width: 550px;
+  height: 550px;
+
+  top: -300px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(79, 70, 229, 0.2);
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 760px;
+
+  margin-inline: auto;
+}
+
+.cta .eyebrow {
+  color: #9ca3af;
+}
+
+.cta h2 {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+  line-height: 1.02;
+
+  letter-spacing: -0.05em;
+}
+
+.cta p:not(.eyebrow) {
+  max-width: 620px;
+
+  margin: 25px auto 32px;
+
+  color: #d1d5db;
+
+  font-size: 1.08rem;
+
+  line-height: 1.7;
+}
+
+.cta .button {
+  min-width: 190px;
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 950px) {
+  .service-layout {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .technology-card {
+    max-width: 700px;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 800px) {
+  .page-hero {
+    padding: 85px 0 95px;
+  }
+
+  .service-layout {
+    gap: 35px;
+  }
+
+  .feature-grid {
+    margin-top: 45px;
+  }
+
+  .comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    padding: 85px 0;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .page-hero {
+    padding: 75px 0 85px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(
+      2.8rem,
+      13vw,
+      4.5rem
+    );
+  }
+
+  .intro {
+    font-size: 1.05rem;
+  }
+
+  .service-intro h2 {
+    font-size: clamp(
+      2.2rem,
+      10vw,
+      3.2rem
+    );
+  }
+
+  .technology-card {
+    padding: 28px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid > div {
+    min-height: auto;
+
+    padding: 24px;
+  }
+
+  .comparison-column {
+    padding: 28px;
+  }
+
+  .stack-item {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .stack-item span {
+    text-align: left;
+  }
+
+  .cta h2 {
+    font-size: clamp(
+      2.3rem,
+      11vw,
+      3.5rem
+    );
+  }
+}

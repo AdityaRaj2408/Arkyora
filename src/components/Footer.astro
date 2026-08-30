@@ -1,0 +1,31 @@
+---
+import {siteConfig} from "../config/site";
+import "../styles/footer.css";
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label="Arkyori home">
+        {siteConfig.name}
+      </a>
+
+      <p>
+        Modern websites and web applications built around your business.
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/services/">Services</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>
+      © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+    </p>
+  </div>
+</footer>
